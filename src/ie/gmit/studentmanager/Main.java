@@ -90,14 +90,15 @@ public class Main extends Application implements Serializable {
                 taMyOutput.setText("No Students in List to save!");
             }
         });
-
+         // new code 25/11
         // Load from DB
         Button btnLoadDB = new Button("Load Students from DB");
         TextField tfLoadStudents = new TextField();
+        tfLoadStudents.setPromptText("Enter path to DB");
 
-        tfLoadStudents.setPromptText("Please enter DB path");
+        tfLoadStudents.setPromptText("Please enter DB from path"); 
         btnLoadDB.setOnAction(e -> {
-
+          //this works with new button sm
             try{
                 File studentDB = new File(tfLoadStudents.getText());
                 ObjectInputStream in = new ObjectInputStream(new FileInputStream(studentDB));
@@ -111,6 +112,9 @@ public class Main extends Application implements Serializable {
             }
 
         });
+       
+
+
 
         // Add Quit button
 		Button btnQuit = new Button("Quit");	
