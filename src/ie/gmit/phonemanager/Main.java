@@ -1,4 +1,4 @@
-package ie.gmit.studentmanager;
+package ie.gmit.phonemanager;
 
 import java.io.File;
 import java.io.Serializable;
@@ -37,12 +37,12 @@ public class Main extends Application implements Serializable {
         btnShowTotal.setOnAction(e -> {
 
             // Code to run when button is clicked
-            tfTotalNumberOfStudents.setText(Integer.toString(sm.findTotalStudents()));
+            tfTotalNumberOfStudents.setText(Integer.toString(pm.findTotalStudents()));
 
         });
 
         // Add Student arrangement
-        Button btnAddStudent = new Button("Add Student");
+        Button btnAddStudentnt = new Button("AdStudentne");
         TextField tfStudentID = new TextField();
 
         tfStudentID.setPromptText("Enter Student ID");

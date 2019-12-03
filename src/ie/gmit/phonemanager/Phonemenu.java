@@ -3,7 +3,7 @@ package ie.gmit.studentmanager;
 import java.util.List;
 import java.util.Scanner;
 
-public class Menu {
+public class PhoneMenu {
 	// Instance Variables
 	private Scanner userInput = null;
 	private StudentManager studentManagerObject = null;
