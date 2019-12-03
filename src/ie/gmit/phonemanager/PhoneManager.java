@@ -16,35 +16,35 @@ public class PhoneManager implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    // Declare a List called students to hold the student objects
-	private List<Student> studentList;
+    // Declare a List called Phone to hold the Phone objects
+	private List<Phone> phoneList;
 
 	// Constructor
-	public StudentManager() {
-		// Instantiate a student ArrayList
-		studentList = new ArrayList<Student>();
+	public PhoneManager() {
+		// Instantiate a Phone ArrayList
+		phoneList = new ArrayList<Phone>();
 	}
 
 	// Getters and Setters
-	public List<Student> getStudents() {
-		return studentList;
+	public List<Phone> getPhones() {
+		return phoneList;
 	}
 
-	public void setStudents(List<Student> studentList) {
-		this.studentList = studentList;
+	public void setPhones(List<Phone> phoneList) {
+		this.phoneList = phoneList;
 	}
 
 	/**
-	 * This method adds a Student to the Student List.
+	 * This method adds a Phone to the Phone List.
 	 *
-	 * @param student a student object that is to be added to the student list
+	 * @param Phone a Phones object that is to be added to the Phone list
 	 * @return a boolean value indicating if the add was successful		
 	 */                     
-	public boolean addStudent(Student student) {
+	public boolean addPhone(Phone phone) {
 		try {
 			// Using Collections add method. It returns true if this collection
 			// changed as a result of the call
-			return studentList.add(student);
+			return phoneList.add(phone);
 		} catch (Exception error) {
 			error.printStackTrace();
 			return false;
@@ -62,22 +62,22 @@ public class PhoneManager implements Serializable {
 		}
 	}
 
-	public boolean deleteStudentById(String studentId) {
-		// Search for the Student by ID
-		Student student = findStudentById(studentId);
-		// If a Student was found then delete the student
-		if (student != null) {
-			return deleteStudent(student);
+	public boolean deletePhoneById(String phoneId) {
+		// Search for the Phone by ID
+		Phone phone = findPhoneById(phoneId);
+		// If a Phone was found then delete the student
+		if (phone != null) {
+			return deletePhone(phone);
 		} else {
 			// If no student was found Return false
 			return false;
 		}
 	}
 
-	public Student findStudentById(String studentId) {
+	public Phone findPhoneById(String phoneId) {
 
-		// Loop over (i.e. Iterate over) arrayList for Student type elements in
-		// the students ArrayList
+		// Loop over (i.e. Iterate over) arrayList for Phone type elements in
+		// the Phone ArrayList
 
 		// There are 3 ways you can iterate through a List.
 		// 1. For Loop
@@ -85,9 +85,9 @@ public class PhoneManager implements Serializable {
 		// 3. Iterator
 
 		// 1. For Loop
-//		for (int i = 0; i < studentList.size(); i++) {
-//			if (studentList.get(i).getStudentId().equals(studentId)) {
-//				return studentList.get(i);
+//		for (int i = 0; i < phoneList.size(); i++) {
+//			if (phoneList.get(i).getPhoneId().equals(phoneId)) {
+//				return PhoneList.get(i);
 //			}
 //		}
 
@@ -100,30 +100,30 @@ public class PhoneManager implements Serializable {
 //		}
 
 		// 3. Iterator
-		Iterator<Student> studentIterator = studentList.iterator();
-		Student studentObjectHolder;
+		Iterator<Phone> phoneIterator = phoneList.iterator();
+		Phone phoneObjectHolder;
 		while (studentIterator.hasNext()) {
-			// Store next Student
-			studentObjectHolder = studentIterator.next();
-			// Check if studentId equals that of current student object
-			if (studentObjectHolder.getStudentId().equals(studentId)) {
-				return studentObjectHolder;
+			// Store next Phone
+			phoneObjectHolder = phoneIterator.next();
+			// Check if studentId equals that of current Phone object
+			if (phoneObjectHolder.getPhoneId().equals(phoneId)) {
+				return phoneObjectHolder;
 			}
 		}
 
-		// Return null if Student ID was not found
+		// Return null if Phone ID was not found
 		return null;
 	}
 
 	// Find a list of student by first name
-	public List<Student> getStudentsByFirstName(String firstName) {
-		// Create a new ArrayList to Hold Students with same names
-		List<Student> sameNames = new ArrayList<Student>();
-		// Loop over arrayList for Student type elements in the students ArrayList do
-		for (Student student : studentList) {
-			// If I find a student with the given first name then add to list
-			if (student.getFirstName().equalsIgnoreCase(firstName)) {
-				sameNames.add(student);
+	public List<Phone> getPhonesByModel(String model) {
+		// Create a new ArrayList to Hold Phones with same names
+		List<Phone> sameNames = new ArrayList<Phone>();
+		// Loop over arrayList for Phones type elements in the Phones ArrayList do
+		for (Phone phone : phoneList) {
+			// If I find a Phones with the given first name then add to list
+			if (phone.getModel().equalsIgnoreCase(model)) {
+				sameNames.add(phone);
 			}
 		}
 		// Check if list has any students
@@ -135,7 +135,7 @@ public class PhoneManager implements Serializable {
 		return null;
 	}
 
-	public void loadStudentFile(String pathToFile) {
+	public void loadPhoneFile(String pathToFile) {
 		File inFile = new File(pathToFile);
 		FileReader fileReader = null;
 		BufferedReader br = null;
