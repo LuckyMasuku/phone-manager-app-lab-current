@@ -1,4 +1,4 @@
-package ie.gmit.studentmanager;
+package ie.gmit.phonemanager;
 
 import java.util.List;
 import java.util.Scanner;
@@ -6,14 +6,14 @@ import java.util.Scanner;
 public class PhoneMenu {
 	// Instance Variables
 	private Scanner userInput = null;
-	private StudentManager studentManagerObject = null;
+	private PhoneManager phoneManagerObject = null;
 	private boolean keepRunning = false;
 	
 	// Constructor Method
 	public Menu() {
 		// Create new scanner object to capture input from the user
 		userInput = new Scanner(System.in);
-		studentManagerObject = new StudentManager(); // Create a new StudentManager object
+		phoneManagerObject = new PhoneManager(); // Create a new PhoneManager object
 		keepRunning = true; // Initialise loop checker
 	}
 
@@ -32,33 +32,33 @@ public class PhoneMenu {
 
 	private void showOptions() {
 		System.out.println("###################################");
-		System.out.println("#         Student Manager         #");
+		System.out.println("#         Phone Manager         #");
 		System.out.println("###################################");
-		System.out.println("(1) Load Student DB");
-		System.out.println("(2) Add a Student.");
-		System.out.println("(3) Delete a Student.");
-		System.out.println("(4) Search for a Student by ID.");
+		System.out.println("(1) Load Phone DB");
+		System.out.println("(2) Add a Phone.");
+		System.out.println("(3) Delete a Phone.");
+		System.out.println("(4) Search for a Phone by ID.");
 		System.out.println("(5) Search for Students by First Name.");
-		System.out.println("(6) Show total Number of Students.");
+		System.out.println("(6) Show total Number of Phones.");
 		System.out.println("(7) Save DB.");
 		System.out.println("(8) Quit.");
 		System.out.println("Select an option [1-8]>");
 	}
 
 	private void selectOption(int userSelection) {
-		if (userSelection == 1) { // Load Students DB
+		if (userSelection == 1) { // Load Phones DB
 			System.out.println("User Selected 1");
-		} else if (userSelection == 2) {  // Add Student
-			addStudent();
-		} else if (userSelection == 3) {  // Delete Student
-			deleteStudent();
-		} else if (userSelection == 4) {  // Search Student by ID
+		} else if (userSelection == 2) {  // Add Phone
+			addPhone();
+		} else if (userSelection == 3) {  // Delete Phone
+			deletePhone();
+		} else if (userSelection == 4) {  // Search Phone by ID
 			searchByID();
-		} else if (userSelection == 5) {  // Search Students by Name
+		} else if (userSelection == 5) {  // Search Phone by Name
 			searchByName();
-		} else if (userSelection == 6) {  // Search Students by Name
-			System.out.println("Total number of students = " +
-					studentManagerObject.findTotalStudents());
+		} else if (userSelection == 6) {  // Search Phone by Name
+			System.out.println("Total number of phone = " +
+					phonesManagerObject.findTotalPhones());
 		} else if (userSelection == 8) {
 			keepRunning = false;
 			System.out.println("Goodbye!");
