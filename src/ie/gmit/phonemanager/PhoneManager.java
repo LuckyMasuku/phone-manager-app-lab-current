@@ -126,9 +126,9 @@ public class PhoneManager implements Serializable {
 				sameNames.add(phone);
 			}
 		}
-		// Check if list has any students
+		// Check if list has any phone
 		if (sameNames.size() > 0) {
-			// If students were found then return the list
+			// If Phone were found then return the list
 			return sameNames;
 		}
 		// If no students were found with that first name then return null
@@ -147,8 +147,8 @@ public class PhoneManager implements Serializable {
 			br.readLine(); //discard first line of csv file
 			while ((record = br.readLine()) != null) {
 				String[] elements = record.split(",");
-				Student newStudent = new Student(elements[0], elements[1], elements[2]);
-				this.addStudent(newStudent);
+				Phone newPhone = new Phone(elements[0], elements[1], elements[2]);
+				this.addPhone(newPhone);
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -163,16 +163,16 @@ public class PhoneManager implements Serializable {
 		}
 	}
 
-	public int findTotalStudents() {
-		// returns the current number of Students in the ArrayList
-		return studentList.size();
+	public int findTotalPhones() {
+		// returns the current number of Phones in the ArrayList
+		return phoneList.size();
 	}
 	
-	public StudentManager loadDB(String dbPath){
-    	StudentManager sm = null;
+	public PhoneManager loadDB(String dbPath){
+    	PhoneManager pm = null;
     	try {
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(dbPath));
-			sm = (StudentManager) in.readObject();
+			pm = (PhoneManager) in.readObject();
     		in.close();
     	} catch (Exception e) {
     		System.out.print("[Error] Cannont load DB. Cause: ");
