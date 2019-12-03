@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 public class Main extends Application implements Serializable {
 
     private static final long serialVersionUID = 1L; // Used for serialization
-    PhoneManager sm = new PhoneManager(); // Used for managing Phones
+    PhoneManager pm = new PhoneManager(); // Used for managing Phones
 
     @Override
     public void start(Stage primaryStage) {
@@ -42,20 +42,24 @@ public class Main extends Application implements Serializable {
         });
 
         // Add Phones arrangement
-        Button btnAddPhone = new Button("AddPhones");
+        Button btnAddPhone = new Button("Add Phones");
         TextField tfPhoneID = new TextField();
-
+        TextField tfPhoneModel = new TextField();
+        TextField tfPhoneType = new TextField();
+        
+         
         tfPhoneID.setPromptText("Enter Phone ID");
-
+        tfPhoneModel.setPromptText("Model");
+        tfPhoneType.setPromptText("Type");
         btnAddPhone.setOnAction(e -> {
             if (tfPhoneID.getText().trim().equals("")) { // If text field is empty
-
                 taMyOutput.setText("Invalid");
             } else {
-
-                Phone phone = new Phone(tfPhoneID.getText());
-                sm.addPhones(student); // Add Phones to student list
-                tfPhonesID.clear();
+                Phone phone = new Phone(tfPhoneID.getText(), tfPhoneModel.getText(), tfPhoneType.getText());
+                pm.addPhone(phone); // Add Phones to student list
+                tfPhoneID.clear();
+                tfPhoneModel.clear();
+                tfPhoneType.clear();
             }
         });
 
@@ -67,18 +71,31 @@ public class Main extends Application implements Serializable {
 
         btnDelPhone.setOnAction(e -> {
 
-            sm.deletePhoneById(tfPhoneDel.getText());
+            pm.deletePhoneById(tfPhoneDel.getText());
+
+        });
+
+        // Search for Student by ID
+        TextField tfPhoneSearch = new TextField();
+        Button btnPhoneSearch = new Button("Search By ID");
+
+        tfPhoneSearch.setPromptText("Enter Phone ID");
+
+        btnPhoneSearch.setOnAction(e -> {
+
+            Phone phoneObj = pm.searchForStudentById(tfPhoneSearch.getText());
+            taMyOutput.setText(phoneObj.getModel() + " " + phoneObj.getType());
 
         });
 
         // Save to DB
         Button btnSaveDB = new Button("Save Phones to DB");
         btnSaveDB.setOnAction(e -> {
-            if (sm.findTotalPhones() > 0) {
+            if (pm.findTotalPhones() > 0) {
                 try {
                     File phoneDB = new File("./resources/phonesDB.ser");
                     ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(phoneDB));
-                    out.writeObject(sm);
+                    out.writeObject(pm);
                     out.close();
                     taMyOutput.setText("Phone Database Saved");
                 } catch (Exception exception) {
@@ -102,7 +119,7 @@ public class Main extends Application implements Serializable {
             try{
                 File phoneDB = new File(tfLoadPhones.getText());
                 ObjectInputStream in = new ObjectInputStream(new FileInputStream(phoneDB));
-                sm = (PhoneManager) in.readObject();
+                pm = (PhoneManager) in.readObject();
                 in.close();
                 taMyOutput.setText("Successfully loaded Phones from Database");
             } catch (Exception exception) {
@@ -125,20 +142,27 @@ public class Main extends Application implements Serializable {
         // Adding and arranging all the nodes in the grid - add(node, column, row)
         GridPane gridPane1 = new GridPane();
         gridPane1.add(tfPhoneID, 0, 0);
-        gridPane1.add(btnAddPhone, 1, 0);
+        gridPane1.add(tfPhoneModel, 1, 0);
+        gridPane1.add(tfPhoneType, 2, 0);
+        gridPane1.add(btnAddPhone, 3, 0);
+
         gridPane1.add(btnShowTotal, 0, 1);
         gridPane1.add(tfTotalNumberOfPhones, 1, 1);
         gridPane1.add(tfPhoneDel, 0, 2);
         gridPane1.add(btnDelPhone, 1, 2);
-        gridPane1.add(btnSaveDB, 0, 3);
-        gridPane1.add(btnLoadDB, 0, 4);
-        gridPane1.add(tfLoadPhones, 1, 4);
-        gridPane1.add(taMyOutput, 0, 5, 2, 1);
-        gridPane1.add(btnQuit, 0, 6);
+
+        gridPane1.add(tfPhoneSearch, 0, 3);
+        gridPane1.add(btnPhoneSearch, 1, 3);
+
+        gridPane1.add(btnSaveDB, 0, 4);
+        gridPane1.add(btnLoadDB, 0, 5);
+        gridPane1.add(tfLoadPhones, 1, 5);
+        gridPane1.add(taMyOutput, 0, 6, 2, 1);
+        gridPane1.add(btnQuit, 0, 7);
 
         // Preparing the Stage (i.e. the container of any JavaFX application)
         // Create a Scene by passing the root group object, height and width
-        Scene scene1 = new Scene(gridPane1, 400, 450);
+        Scene scene1 = new Scene(gridPane1, 700, 450);
         // Setting the title to Stage.
 
         if (getParameters().getRaw().size() == 0) {

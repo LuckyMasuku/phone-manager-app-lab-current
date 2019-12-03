@@ -18,8 +18,8 @@ public class Phone implements Serializable {
 	}
 	
 	public Phone(String phoneId, String model, String type) {
-		// this(phoneId); - could set studentId this way
-		this.studentId = phoneId;
+		// this(phoneId); - could set phoneId this way
+		this.phoneId = phoneId;
 		this.model = model;
         this.type = type;
     }

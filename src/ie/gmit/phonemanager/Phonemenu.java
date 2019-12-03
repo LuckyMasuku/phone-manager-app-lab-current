@@ -38,7 +38,7 @@ public class PhoneMenu {
 		System.out.println("(2) Add a Phone.");
 		System.out.println("(3) Delete a Phone.");
 		System.out.println("(4) Search for a Phone by ID.");
-		System.out.println("(5) Search for Students by First Name.");
+		System.out.println("(5) Search for Sphones by First Name.");
 		System.out.println("(6) Show total Number of Phones.");
 		System.out.println("(7) Save DB.");
 		System.out.println("(8) Quit.");
@@ -58,7 +58,7 @@ public class PhoneMenu {
 			searchByName();
 		} else if (userSelection == 6) {  // Search Phone by Name
 			System.out.println("Total number of phone = " +
-					phonesManagerObject.findTotalPhones());
+					phoneManagerObject.findTotalPhones());
 		} else if (userSelection == 8) {
 			keepRunning = false;
 			System.out.println("Goodbye!");
@@ -69,10 +69,10 @@ public class PhoneMenu {
 	private void addPhone() {
 		System.out.println("Enter Phone ID>");
 		String phoneId = userInput.next();
-		System.out.println("Enter Student Model");
-		String phoneName = userInput.next();
+		System.out.println("Enter Phone Model");
+		String phoneModel = userInput.next();
 		System.out.println("Enter Phone Type>");
-		String studentSurname = userInput.next();
+		String phonesType = userInput.next();
 
 		Phone newPhoneObject = new Phone(phoneId, model, type);
 		

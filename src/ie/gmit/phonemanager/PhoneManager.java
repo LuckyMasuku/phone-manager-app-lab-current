@@ -51,11 +51,11 @@ public class PhoneManager implements Serializable {
 		}
 	}
 
-	public boolean deleteStudent(Student student) {
+	public boolean deletePhone(Phone phone) {
 		try {
 			// Using Collections remove method. It returns true if this list 
 			// contained the specified element
-			return studentList.remove(student);
+			return PhoneList.remove(phone);
 		} catch (Exception error) {
 			error.printStackTrace();
 			return false;
@@ -65,11 +65,11 @@ public class PhoneManager implements Serializable {
 	public boolean deletePhoneById(String phoneId) {
 		// Search for the Phone by ID
 		Phone phone = findPhoneById(phoneId);
-		// If a Phone was found then delete the student
+		// If a Phone was found then delete the phone
 		if (phone != null) {
 			return deletePhone(phone);
 		} else {
-			// If no student was found Return false
+			// If no phone was found Return false
 			return false;
 		}
 	}
@@ -92,20 +92,20 @@ public class PhoneManager implements Serializable {
 //		}
 
 		// 2. Advanced For Loop
-//		for (Student student : studentList) {
+//		for (Phone phone : phoneList) {
 //			// No need to check for null as ArrayList is dynamic and fills holes
-//			if (student.getStudentId().equals(studentId)) {
-//				return student;
+//			if (phone.getPhoneId().equals(phoneId)) {
+//				return phone;
 //			}
 //		}
 
 		// 3. Iterator
 		Iterator<Phone> phoneIterator = phoneList.iterator();
 		Phone phoneObjectHolder;
-		while (studentIterator.hasNext()) {
+		while (phoneIterator.hasNext()) {
 			// Store next Phone
 			phoneObjectHolder = phoneIterator.next();
-			// Check if studentId equals that of current Phone object
+			// Check if phoneId equals that of current Phone object
 			if (phoneObjectHolder.getPhoneId().equals(phoneId)) {
 				return phoneObjectHolder;
 			}
@@ -115,7 +115,7 @@ public class PhoneManager implements Serializable {
 		return null;
 	}
 
-	// Find a list of student by first name
+	// Find a list of phone by first name
 	public List<Phone> getPhonesByModel(String model) {
 		// Create a new ArrayList to Hold Phones with same names
 		List<Phone> sameNames = new ArrayList<Phone>();
@@ -131,7 +131,7 @@ public class PhoneManager implements Serializable {
 			// If Phone were found then return the list
 			return sameNames;
 		}
-		// If no students were found with that first name then return null
+		// If no phones were found with that first name then return null
 		return null;
 	}
 
@@ -178,7 +178,7 @@ public class PhoneManager implements Serializable {
     		System.out.print("[Error] Cannont load DB. Cause: ");
     		e.printStackTrace();
     	}
-		return sm;
+		return pm;
     }
 
     public void addPhone(Phone phone) {
