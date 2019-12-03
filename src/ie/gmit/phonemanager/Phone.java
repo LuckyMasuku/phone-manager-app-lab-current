@@ -16,72 +16,74 @@ public class Phone implements Serializable {
 	private Course course;
 
 	// Constructors
-	public Student(String studentId) {
-		this.studentId = studentId;
+	public Phone(String phoneId) {
+		this.phoneId = phoneId;
 	}
 	
-	public Student(String studentId, String firstName, String surname) {
-		// this(studentId); - could set studentId this way
-		this.studentId = studentId;
-		this.firstName = firstName;
-		this.surname = surname;
+	public Phone(String phoneId, String model, String type) {
+		// this(phoneId); - could set studentId this way
+		this.studentId = phoneId;
+		this.model = model;
+        this.type = type;
+        
+
 	}
 	
-	public Student(String studentId, String firstName, String surname, Date dob) {
+	public Phone(String phoneId, String model, String type, Date entryDate, String description) {
 		// this(studentId); - could set studentId this way
-		this.studentId = studentId;
-		this.firstName = firstName;
-		this.surname = surname;
-		this.dob = dob;
+		this.studentId = phoneId;
+		this.model = model;
+		this.type = type;
+		this.description = description;
 	}
 
 	// Getters and Setters
-	public String getStudentId() {
-		return studentId;
+	public String getPhoneId() {
+		return phoneId;
 	}
 
-	public void setStudentId(String studentId) {
-		this.studentId = studentId;
+	public void setPhoneId(String phoneId) {
+		this.phoneId = phoneId;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getModel() {
+		return model;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setModel(String model) {
+		this.model = model;
 	}
 
-	public String getSurname() {
-		return surname;
+	public String getEnrtyDate() {
+		return entryDate;
 	}
 
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setEntryDate(String entryDate) {
+		this.entryDate = entryDate;
 	}
 
-	public Date getDob() {
-		return dob;
+	public Date getDescription() {
+		return description;
 	}
 
-	public void setDob(Date dob) {
-		this.dob = dob;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Address getAddress() {
-		return address;
+	public Address getType() {
+		return type;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public Course getCourse() {
-		return course;
-	}
+	//public Course getCourse() {
+		//return course;
+	//}
 
-	public void setCourse(Course course) {
-		this.course = course;
-	}
+	//public void setCourse(Course course) {
+		//this.course = course;
+	//}
 
 }
