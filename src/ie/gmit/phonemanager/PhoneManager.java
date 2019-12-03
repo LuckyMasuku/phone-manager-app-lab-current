@@ -1,4 +1,4 @@
-package ie.gmit.studentmanager;
+package ie.gmit.phonemanager;
 
 import java.io.BufferedReader;
 import java.io.File;
