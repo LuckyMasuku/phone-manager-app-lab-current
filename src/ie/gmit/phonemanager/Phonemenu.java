@@ -108,14 +108,14 @@ public class PhoneMenu {
 	}
 
 	private void searchByName() {
-		System.out.println("Enter Student Name>");
-		String studentName = userInput.next();
-		List<Student> students = studentManagerObject.getStudentsByFirstName(studentName);
-		if (students == null) {
-			System.out.println("No studnet with that first name found!");
+		System.out.println("Enter Phone Name>");
+		String phoneName = userInput.next();
+		List<SPhone> phones = phoneManagerObject.getPhonesByModel(phoneModel);
+		if (phones == null) {
+			System.out.println("No Phone with that first model found!");
 		} else {
-			for (Student student : students) {
-				System.out.println(     student.getStudentId()    );
+			for (Phone phone : phones) {
+				System.out.println(     phone.getPhoneId()    );
 			}
 		}
 	}
