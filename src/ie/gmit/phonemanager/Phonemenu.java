@@ -66,44 +66,44 @@ public class PhoneMenu {
 			
 	}
 
-	private void addStudent() {
-		System.out.println("Enter Student ID>");
-		String studentId = userInput.next();
-		System.out.println("Enter Student Name>");
-		String studentName = userInput.next();
-		System.out.println("Enter Student Surname>");
+	private void addPhone() {
+		System.out.println("Enter Phone ID>");
+		String phoneId = userInput.next();
+		System.out.println("Enter Student Model");
+		String phoneName = userInput.next();
+		System.out.println("Enter Phone Type>");
 		String studentSurname = userInput.next();
 
-		Student newStudentObject = new Student(studentId, studentName, studentSurname);
+		Phone newPhoneObject = new Phone(phoneId, phoneModel, phoneType);
 		
-		boolean result = studentManagerObject.addStudent(newStudentObject);
+		boolean result = phoneManagerObject.addPhone(newPhoneObject);
 
 		if (result) {
-			System.out.println("Student " + studentId + " has been added successfully.");
+			System.out.println("Phone " + phoneId + " has been added successfully.");
 		} else {
-			System.out.println("ERROR: Student " + studentId +"  was not added!");
+			System.out.println("ERROR: Phone " + phoneId +"  was not added!");
 		}
 	}
 
-	private void deleteStudent() {
-		System.out.println("Enter Student ID>");
-		String studentId = userInput.next();
-		boolean result = studentManagerObject.deleteStudentById(studentId);
+	private void deletePhone() {
+		System.out.println("Enter Phone ID>");
+		String phoneId = userInput.next();
+		boolean result = phoneManagerObject.deletePhoneById(phoneId);
 		if (result) {
-			System.out.println("Student " + studentId + " has been deleted successfully.");
+			System.out.println("Phone " + phoneId + " has been deleted successfully.");
 		} else {
-			System.out.println("ERROR: Student " + studentId +"  was not deleted!");
+			System.out.println("ERROR: Phone " + phoneId +"  was not deleted!");
 		}
 	}
 
 	private void searchByID() {
-		System.out.println("Enter Student ID>");
-		String studentId = userInput.next();
-		Student student1 = studentManagerObject.findStudentById(studentId);
-		if (student1 == null) {
-			System.out.println("Student NOT found!");
+		System.out.println("Enter Phone ID>");
+		String phoneId = userInput.next();
+		Phone phone1 = phoneManagerObject.findPhoneById(phoneId);
+		if (phone1 == null) {
+			System.out.println("Phone NOT found!");
 		} else {
-			System.out.println("Student " + student1.getStudentId() + " found!");
+			System.out.println("Phone " + phone1.getPhoneId() + " found!");
 		}	
 	}
 
