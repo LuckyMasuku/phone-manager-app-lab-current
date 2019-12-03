@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 public class Main extends Application implements Serializable {
 
     private static final long serialVersionUID = 1L; // Used for serialization
-    StudentManager sm = new StudentManager(); // Used for managing students
+    PhoneManager sm = new PhoneManager(); // Used for managing Phones
 
     @Override
     public void start(Stage primaryStage) {
@@ -27,88 +27,88 @@ public class Main extends Application implements Serializable {
         taMyOutput.setPrefHeight(100); // sets height of the TextArea to 400 pixels
         taMyOutput.setPrefWidth(100); // sets width of the TextArea to 300 pixels
 
-        // Show total number of students
-        Button btnShowTotal = new Button("Show Total Students");
-        TextField tfTotalNumberOfStudents = new TextField();
+        // Show total number of Phones
+        Button btnShowTotal = new Button("Show Total Phones");
+        TextField tfTotalNumberOfPhones = new TextField();
 
-        tfTotalNumberOfStudents.setEditable(false); // This box is not editable. Only displays result.
-        tfTotalNumberOfStudents.setPromptText("0");
+        tfTotalNumberOfPhones.setEditable(false); // This box is not editable. Only displays result.
+        tfTotalNumberOfPhones.setPromptText("0");
 
         btnShowTotal.setOnAction(e -> {
 
             // Code to run when button is clicked
-            tfTotalNumberOfStudents.setText(Integer.toString(pm.findTotalStudents()));
+            tfTotalNumberOfPhones.setText(Integer.toString(pm.findTotalPhones()));
 
         });
 
-        // Add Student arrangement
-        Button btnAddStudentnt = new Button("AdStudentne");
-        TextField tfStudentID = new TextField();
+        // Add Phones arrangement
+        Button btnAddPhone = new Button("AddPhones");
+        TextField tfPhoneID = new TextField();
 
-        tfStudentID.setPromptText("Enter Student ID");
+        tfPhoneID.setPromptText("Enter Phone ID");
 
-        btnAddStudent.setOnAction(e -> {
-            if (tfStudentID.getText().trim().equals("")) { // If text field is empty
+        btnAddPhone.setOnAction(e -> {
+            if (tfPhoneID.getText().trim().equals("")) { // If text field is empty
 
                 taMyOutput.setText("Invalid");
             } else {
 
-                Student student = new Student(tfStudentID.getText());
-                sm.addStudent(student); // Add student to student list
-                tfStudentID.clear();
+                Phone phone = new Phone(tfPhoneID.getText());
+                sm.addPhones(student); // Add Phones to student list
+                tfPhonesID.clear();
             }
         });
 
-        // Delete Student arrangement
-        TextField tfStudentDel = new TextField();
-        Button btnDelStudent = new Button("Delete Student");
+        // Delete Phone arrangement
+        TextField tfPhoneDel = new TextField();
+        Button btnDelPhone = new Button("Delete Phone");
 
-        tfStudentDel.setPromptText("Enter Student ID");
+        tfPhoneDel.setPromptText("Enter Phone ID");
 
-        btnDelStudent.setOnAction(e -> {
+        btnDelPhone.setOnAction(e -> {
 
-            sm.deleteStudentById(tfStudentDel.getText());
+            sm.deletePhoneById(tfPhoneDel.getText());
 
         });
 
         // Save to DB
-        Button btnSaveDB = new Button("Save Students to DB");
+        Button btnSaveDB = new Button("Save Phones to DB");
         btnSaveDB.setOnAction(e -> {
-            if (sm.findTotalStudents() > 0) {
+            if (sm.findTotalPhones() > 0) {
                 try {
-                    File studentDB = new File("./resources/studentsDB.ser");
-                    ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(studentDB));
+                    File phoneDB = new File("./resources/phonesDB.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(phoneDB));
                     out.writeObject(sm);
                     out.close();
-                    taMyOutput.setText("Student Database Saved");
+                    taMyOutput.setText("Phone Database Saved");
                 } catch (Exception exception) {
                     System.out.print("[Error] Cannont save DB. Cause: ");
                     exception.printStackTrace();
-                    taMyOutput.setText("ERROR: Failed to save Students DB!");
+                    taMyOutput.setText("ERROR: Failed to save Phones DB!");
                 }
             } else {
-                taMyOutput.setText("No Students in List to save!");
+                taMyOutput.setText("No Phones in List to save!");
             }
         });
          // new code 25/11
         // Load from DB
-        Button btnLoadDB = new Button("Load Students from DB");
-        TextField tfLoadStudents = new TextField();
-        tfLoadStudents.setPromptText("Enter path to DB");
+        Button btnLoadDB = new Button("Load Phones from DB");
+        TextField tfLoadPhones = new TextField();
+        tfLoadPhones.setPromptText("Enter path to DB");
 
-        tfLoadStudents.setPromptText("Please enter DB from path"); 
+        tfLoadPhones.setPromptText("Please enter DB from path"); 
         btnLoadDB.setOnAction(e -> {
           //this works with new button sm
             try{
-                File studentDB = new File(tfLoadStudents.getText());
-                ObjectInputStream in = new ObjectInputStream(new FileInputStream(studentDB));
-                sm = (StudentManager) in.readObject();
+                File phoneDB = new File(tfLoadPhones.getText());
+                ObjectInputStream in = new ObjectInputStream(new FileInputStream(phoneDB));
+                sm = (PhoneManager) in.readObject();
                 in.close();
-                taMyOutput.setText("Successfully loaded Students from Database");
+                taMyOutput.setText("Successfully loaded Phones from Database");
             } catch (Exception exception) {
                     System.out.print("[Error] Cannont load DB. Cause: ");
                     exception.printStackTrace();
-                    taMyOutput.setText("ERROR: Failed to load Students DB!");
+                    taMyOutput.setText("ERROR: Failed to load Phones DB!");
             }
 
         });
@@ -124,15 +124,15 @@ public class Main extends Application implements Serializable {
 
         // Adding and arranging all the nodes in the grid - add(node, column, row)
         GridPane gridPane1 = new GridPane();
-        gridPane1.add(tfStudentID, 0, 0);
-        gridPane1.add(btnAddStudent, 1, 0);
+        gridPane1.add(tfPhoneID, 0, 0);
+        gridPane1.add(btnAddPhone, 1, 0);
         gridPane1.add(btnShowTotal, 0, 1);
-        gridPane1.add(tfTotalNumberOfStudents, 1, 1);
-        gridPane1.add(tfStudentDel, 0, 2);
-        gridPane1.add(btnDelStudent, 1, 2);
+        gridPane1.add(tfTotalNumberOfPhones, 1, 1);
+        gridPane1.add(tfPhoneDel, 0, 2);
+        gridPane1.add(btnDelPhone, 1, 2);
         gridPane1.add(btnSaveDB, 0, 3);
         gridPane1.add(btnLoadDB, 0, 4);
-        gridPane1.add(tfLoadStudents, 1, 4);
+        gridPane1.add(tfLoadPhones, 1, 4);
         gridPane1.add(taMyOutput, 0, 5, 2, 1);
         gridPane1.add(btnQuit, 0, 6);
 
@@ -142,7 +142,7 @@ public class Main extends Application implements Serializable {
         // Setting the title to Stage.
 
         if (getParameters().getRaw().size() == 0) {
-            primaryStage.setTitle("Student Manager Application");
+            primaryStage.setTitle("Phone Manager Application");
         } else {
             primaryStage.setTitle(getParameters().getRaw().get(0));
         }
