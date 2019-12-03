@@ -40,7 +40,7 @@ public class PhoneManager implements Serializable {
 	 * @param Phone a Phones object that is to be added to the Phone list
 	 * @return a boolean value indicating if the add was successful		
 	 */                     
-	public boolean addPhone(Phone phone) {
+	public boolean MenuPhone(Phone phone) {
 		try {
 			// Using Collections add method. It returns true if this collection
 			// changed as a result of the call
