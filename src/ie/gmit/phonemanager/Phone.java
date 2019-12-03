@@ -10,11 +10,8 @@ public class Phone implements Serializable {
     // Instance Variables
 	private String phoneId;
 	private String model;
-	private String type;
-	private Date entryDate;
-	private String description;
-	private Course course;
-
+    private String type;
+    
 	// Constructors
 	public Phone(String phoneId) {
 		this.phoneId = phoneId;
@@ -25,19 +22,9 @@ public class Phone implements Serializable {
 		this.studentId = phoneId;
 		this.model = model;
         this.type = type;
-        
+    }
 
-	}
-	
-	public Phone(String phoneId, String model, String type, Date entryDate, String description) {
-		// this(studentId); - could set studentId this way
-		this.studentId = phoneId;
-		this.model = model;
-		this.type = type;
-		this.description = description;
-	}
-
-	// Getters and Setters
+// Getters and Setters
 	public String getPhoneId() {
 		return phoneId;
 	}
@@ -52,38 +39,13 @@ public class Phone implements Serializable {
 
 	public void setModel(String model) {
 		this.model = model;
-	}
-
-	public String getEnrtyDate() {
-		return entryDate;
-	}
-
-	public void setEntryDate(String entryDate) {
-		this.entryDate = entryDate;
-	}
-
-	public Date getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Address getType() {
+    }
+    
+    public String getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+    public void setType(String type) {
 		this.type = type;
-	}
-
-	//public Course getCourse() {
-		//return course;
-	//}
-
-	//public void setCourse(Course course) {
-		//this.course = course;
-	//}
-
+    }
 }

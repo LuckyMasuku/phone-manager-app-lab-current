@@ -10,7 +10,7 @@ public class PhoneMenu {
 	private boolean keepRunning = false;
 	
 	// Constructor Method
-	public Menu() {
+	public PhoneMenu() {
 		// Create new scanner object to capture input from the user
 		userInput = new Scanner(System.in);
 		phoneManagerObject = new PhoneManager(); // Create a new PhoneManager object
@@ -74,7 +74,7 @@ public class PhoneMenu {
 		System.out.println("Enter Phone Type>");
 		String studentSurname = userInput.next();
 
-		Phone newPhoneObject = new Phone(phoneId, phoneModel, phoneType);
+		Phone newPhoneObject = new Phone(phoneId, model, type);
 		
 		boolean result = phoneManagerObject.addPhone(newPhoneObject);
 
@@ -110,7 +110,7 @@ public class PhoneMenu {
 	private void searchByName() {
 		System.out.println("Enter Phone Name>");
 		String phoneName = userInput.next();
-		List<SPhone> phones = phoneManagerObject.getPhonesByModel(phoneModel);
+		List<Phone> phones = phoneManagerObject.getModel(model);
 		if (phones == null) {
 			System.out.println("No Phone with that first model found!");
 		} else {
