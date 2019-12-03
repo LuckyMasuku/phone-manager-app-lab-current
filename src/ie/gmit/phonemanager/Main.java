@@ -81,9 +81,10 @@ public class Main extends Application implements Serializable {
 
         tfPhoneSearch.setPromptText("Enter Phone ID");
 
+        
         btnPhoneSearch.setOnAction(e -> {
 
-            Phone phoneObj = pm.searchForStudentById(tfPhoneSearch.getText());
+           Phone phoneObj = pm.findPhoneById(tfPhoneSearch.getText());
             taMyOutput.setText(phoneObj.getModel() + " " + phoneObj.getType());
 
         });

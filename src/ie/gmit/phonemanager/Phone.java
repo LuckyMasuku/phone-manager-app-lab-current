@@ -1,7 +1,6 @@
 package ie.gmit.phonemanager;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Phone implements Serializable {
 

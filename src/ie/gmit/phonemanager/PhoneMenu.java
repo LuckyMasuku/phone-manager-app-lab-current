@@ -74,7 +74,7 @@ public class PhoneMenu {
 		System.out.println("Enter Phone Type>");
 		String phonesType = userInput.next();
 
-		Phone newPhoneObject = new Phone(phoneId, model, type);
+		Phone newPhoneObject = new Phone(phoneId, phoneModel, phonesType);
 		
 		boolean result = phoneManagerObject.addPhone(newPhoneObject);
 
@@ -110,7 +110,7 @@ public class PhoneMenu {
 	private void searchByName() {
 		System.out.println("Enter Phone Name>");
 		String phoneName = userInput.next();
-		List<Phone> phones = phoneManagerObject.getModel(model);
+		List<Phone> phones = phoneManagerObject.getPhonesByModel(phoneName);
 		if (phones == null) {
 			System.out.println("No Phone with that first model found!");
 		} else {

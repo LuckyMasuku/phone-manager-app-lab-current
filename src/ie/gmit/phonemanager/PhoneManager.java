@@ -40,7 +40,7 @@ public class PhoneManager implements Serializable {
 	 * @param Phone a Phones object that is to be added to the Phone list
 	 * @return a boolean value indicating if the add was successful		
 	 */                     
-	public boolean Phone(Phone phone) {
+	public boolean addPhone(Phone phone) {
 		try {
 			// Using Collections add method. It returns true if this collection
 			// changed as a result of the call
@@ -55,7 +55,7 @@ public class PhoneManager implements Serializable {
 		try {
 			// Using Collections remove method. It returns true if this list 
 			// contained the specified element
-			return PhoneList.remove(phone);
+			return phoneList.remove(phone);
 		} catch (Exception error) {
 			error.printStackTrace();
 			return false;
@@ -179,9 +179,5 @@ public class PhoneManager implements Serializable {
     		e.printStackTrace();
     	}
 		return pm;
-    }
-
-    public void addPhone(Phone phone) {
-    }
-
+        }
 }
