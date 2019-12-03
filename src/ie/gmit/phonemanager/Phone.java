@@ -8,11 +8,11 @@ public class Phone implements Serializable {
     private static final long serialVersionUID = 1L;
     
     // Instance Variables
-	private String studentId;
-	private String firstName;
-	private String surname;
-	private Date dob;
-	private Address address;
+	private String phoneId;
+	private String model;
+	private String type;
+	private Date entryDate;
+	private String description;
 	private Course course;
 
 	// Constructors
