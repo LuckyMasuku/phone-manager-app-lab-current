@@ -21,7 +21,7 @@ public class PhoneManager implements Serializable {
 
 	// Constructor
 	public PhoneManager() {
-		// Instantiate a Phone ArrayList
+	// Instantiate a Phone ArrayList
 		phoneList = new ArrayList<Phone>();
 	}
 
@@ -85,19 +85,19 @@ public class PhoneManager implements Serializable {
 		// 3. Iterator
 
 		// 1. For Loop
-//		for (int i = 0; i < phoneList.size(); i++) {
-//			if (phoneList.get(i).getPhoneId().equals(phoneId)) {
-//				return PhoneList.get(i);
-//			}
-//		}
+        //		for (int i = 0; i < phoneList.size(); i++) {
+        //			if (phoneList.get(i).getPhoneId().equals(phoneId)) {
+        //				return PhoneList.get(i);
+        //			}
+        //		}
 
-		// 2. Advanced For Loop
-//		for (Phone phone : phoneList) {
-//			// No need to check for null as ArrayList is dynamic and fills holes
-//			if (phone.getPhoneId().equals(phoneId)) {
-//				return phone;
-//			}
-//		}
+        // 2. Advanced For Loop
+        //		for (Phone phone : phoneList) {
+        //			// No need to check for null as ArrayList is dynamic and fills holes
+        //			if (phone.getPhoneId().equals(phoneId)) {
+        //				return phone;
+        //			}
+        //		}
 
 		// 3. Iterator
 		Iterator<Phone> phoneIterator = phoneList.iterator();
@@ -115,7 +115,7 @@ public class PhoneManager implements Serializable {
 		return null;
 	}
 
-	// Find a list of phone by first name
+	   // Find a list of phone by first name
 	public List<Phone> getPhonesByModel(String model) {
 		// Create a new ArrayList to Hold Phones with same names
 		List<Phone> sameNames = new ArrayList<Phone>();

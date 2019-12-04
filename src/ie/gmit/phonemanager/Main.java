@@ -47,16 +47,17 @@ public class Main extends Application implements Serializable {
         TextField tfPhoneModel = new TextField();
         TextField tfPhoneType = new TextField();
         
-         
+          // If text field is empty
         tfPhoneID.setPromptText("Enter Phone ID");
         tfPhoneModel.setPromptText("Model");
         tfPhoneType.setPromptText("Type");
         btnAddPhone.setOnAction(e -> {
-            if (tfPhoneID.getText().trim().equals("")) { // If text field is empty
+            if (tfPhoneID.getText().trim().equals("")) {
                 taMyOutput.setText("Invalid");
             } else {
                 Phone phone = new Phone(tfPhoneID.getText(), tfPhoneModel.getText(), tfPhoneType.getText());
-                pm.addPhone(phone); // Add Phones to student list
+               // Add Phones to student list
+                pm.addPhone(phone); 
                 tfPhoneID.clear();
                 tfPhoneModel.clear();
                 tfPhoneType.clear();
