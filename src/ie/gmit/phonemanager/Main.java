@@ -167,7 +167,7 @@ public class Main extends Application implements Serializable {
         Scene scene1 = new Scene(gridPane1, 700, 450);
 
         //Styling nodes
-        btnAddPhone.setStyle("-fx-background-color: indigo; ex-text-fill: blue");
+        btnAddPhone.setStyle("-fx-background-color: indigo; ex-text-fill: yellow");
         // Setting the title to Stage.
 
         if (getParameters().getRaw().size() == 0) {
