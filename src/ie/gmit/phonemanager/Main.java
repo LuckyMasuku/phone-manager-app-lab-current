@@ -16,9 +16,10 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class Main extends Application implements Serializable {
-
-    private static final long serialVersionUID = 1L; // Used for serialization
-    PhoneManager pm = new PhoneManager(); // Used for managing Phones
+// Used for serialization
+    private static final long serialVersionUID = 1L; 
+     // Used for managing Phones
+    PhoneManager pm = new PhoneManager();
 
     @Override
     public void start(Stage primaryStage) {
@@ -31,7 +32,8 @@ public class Main extends Application implements Serializable {
         Button btnShowTotal = new Button("Show Total Phones");
         TextField tfTotalNumberOfPhones = new TextField();
 
-        tfTotalNumberOfPhones.setEditable(false); // This box is not editable. Only displays result.
+        tfTotalNumberOfPhones.setEditable(false);
+         // This box is not editable. Only displays result.
         tfTotalNumberOfPhones.setPromptText("0");
 
         btnShowTotal.setOnAction(e -> {
@@ -56,7 +58,7 @@ public class Main extends Application implements Serializable {
                 taMyOutput.setText("Invalid");
             } else {
                 Phone phone = new Phone(tfPhoneID.getText(), tfPhoneModel.getText(), tfPhoneType.getText());
-               // Add Phones to student list
+               // Add Phones to phones list
                 pm.addPhone(phone); 
                 tfPhoneID.clear();
                 tfPhoneModel.clear();
@@ -76,7 +78,7 @@ public class Main extends Application implements Serializable {
 
         });
 
-        // Search for Student by ID
+        // Search for Phones by ID
         TextField tfPhoneSearch = new TextField();
         Button btnPhoneSearch = new Button("Search By ID");
 
